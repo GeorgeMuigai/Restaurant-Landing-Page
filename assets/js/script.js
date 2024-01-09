@@ -14,7 +14,7 @@ const multiEvent = function (elements, eventType, callback) {
         elements[i].addEventListener(eventType, callback);
     }
 }
-
+ 
 // navbar
 const navbar = document.querySelector("[data-navbar]")
 const navTogglers = document.querySelectorAll("[data-nav-toggler]")
@@ -50,3 +50,38 @@ window.addEventListener("scroll", ()=> {
         header.classList.remove('active')
     }
 })
+
+// hero slider
+const heroSlider = document.querySelector('[data-hero-slider]');
+const heroSLiderItems = document.querySelectorAll('[data-hero-slider-item]');
+
+let currentSLidePos = 0;
+let lastActiveSlide = heroSLiderItems[0]
+
+const updateSlider = () => {
+    lastActiveSlide.classList.remove("active")
+    heroSLiderItems[currentSLidePos].classList.add("active")
+    lastActiveSlide = heroSLiderItems[currentSLidePos];
+}
+
+const slideNext = () => {
+    if (currentSLidePos >= heroSLiderItems.length - 1) {
+        currentSLidePos = 0;
+    } else {
+        currentSLidePos++;
+    }
+
+    updateSlider()
+}
+
+let autoSlideInterval;
+const autoSlide = () => {
+    
+    autoSlideInterval = setInterval(function () {
+        slideNext()
+    }, 7000)
+
+    console.log("sliding next")
+}
+
+window.addEventListener('load', autoSlide)
