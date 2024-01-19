@@ -54,6 +54,7 @@ window.addEventListener("scroll", ()=> {
 // hero slider
 const heroSlider = document.querySelector('[data-hero-slider]');
 const heroSLiderItems = document.querySelectorAll('[data-hero-slider-item]');
+const viewButtons = document.querySelectorAll("[data-view-btn]") 
 
 let currentSLidePos = 0;
 let lastActiveSlide = heroSLiderItems[0]
@@ -80,8 +81,11 @@ const autoSlide = () => {
     autoSlideInterval = setInterval(function () {
         slideNext()
     }, 7000)
-
-    console.log("sliding next")
 }
+
+viewButtons[currentSLidePos].addEventListener('mouseover', ()=> {
+    console.log("hovering");
+    console.log(currentSLidePos);
+})
 
 window.addEventListener('load', autoSlide)
