@@ -89,3 +89,6 @@ viewButtons[currentSLidePos].addEventListener('mouseover', ()=> {
 })
 
 window.addEventListener('load', autoSlide)
+
+
+// PARALLAX EFFECT
